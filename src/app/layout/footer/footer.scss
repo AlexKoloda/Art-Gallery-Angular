@@ -1,0 +1,33 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+  padding: 20px;
+
+  &-icon {
+    max-width: 45Bpx;
+  }
+
+  &-logo {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+
+    h4 {
+      margin: 0;
+      padding: 0;
+    }
+
+    a:hover {
+      color: black;
+    }
+  }
+
+  &-nav {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+  }
+}

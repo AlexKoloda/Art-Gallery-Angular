@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Button } from '../../shared/button/button';
+import { ButtonComponent } from '../../shared/button/button';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [Button],
+  imports: [ButtonComponent],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })

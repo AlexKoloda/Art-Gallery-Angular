@@ -17,3 +17,15 @@ body {
 .font-bold {
   font-weight: 700;
 }
+
+a {
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  &:hover {
+    opacity: 1;
+    filter: brightness(1.1);
+    color: #667eea;
+  }
+}
