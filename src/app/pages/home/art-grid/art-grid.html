@@ -1,15 +1,14 @@
-<section>
-  <div>
-    <ul>
-      @if (arts.length === 0) {
-      <div>
-        <h2>Sorry, no arts</h2>
-      </div>
-      } @for (art of arts; track art.id ) {
-      <li>
-        <app-art-card [art]="art"></app-art-card>
-      </li>
-      }
-    </ul>
-  </div>
+<section class="catalog">
+  <h2 class="catalog-title">Category name</h2>
+  <ul class="catalog-grid">
+    @if (arts.length === 0) {
+    <div>
+      <h2>Sorry, no arts</h2>
+    </div>
+    } @for (art of arts; track art.id ) {
+    <li>
+      <app-art-card [art]="art"></app-art-card>
+    </li>
+    }
+  </ul>
 </section>

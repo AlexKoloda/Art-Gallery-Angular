@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ArtCard } from '../../../shared/art-card/art-card';
+import { ArtCard } from '../art-card/art-card';
 import { IArt } from '../../../models/art.model';
 
 //TODO: test art description, replace with API data in feat.
@@ -11,7 +11,6 @@ Suspendisse sit amet sem eget felis sodales lacinia.
 Donec ac sapien vitae lorem placerat luctus.
 `;
 //TODO: test art array, replace with API data in feat.
-const TEST_IMAGE_PATH = 'https://placehold.co/400?text=Art+Gallery&font=opensans';
 
 const TEST_ART_ARRAY: IArt[] = [
   {
@@ -22,7 +21,7 @@ const TEST_ART_ARRAY: IArt[] = [
     price: 10000,
     location: 'Louvre (paris, france)',
     categoryId: '1',
-    imagePath: TEST_IMAGE_PATH,
+    imagePath: 'assets/images/dangerous-lunch.jpg',
     rating: 0,
   },
   {
@@ -33,7 +32,7 @@ const TEST_ART_ARRAY: IArt[] = [
     price: 10000,
     location: 'LOUVRE (PARIS, FRANCE)',
     categoryId: '1',
-    imagePath: TEST_IMAGE_PATH,
+    imagePath: 'assets/images/star-night.jpg',
     rating: 0,
   },
   {
@@ -44,7 +43,7 @@ const TEST_ART_ARRAY: IArt[] = [
     price: 10000,
     location: 'DELL ACCADEMIA (FLORENCE, ITALY)',
     categoryId: '2',
-    imagePath: TEST_IMAGE_PATH,
+    imagePath: 'assets/images/david.jpg',
     rating: 0,
   },
   {
@@ -55,7 +54,7 @@ const TEST_ART_ARRAY: IArt[] = [
     price: 10000,
     location: 'Louvre (paris, france)',
     categoryId: '1',
-    imagePath: TEST_IMAGE_PATH,
+    imagePath: 'assets/images/lisa.jpg',
     rating: 0,
   },
 ];
