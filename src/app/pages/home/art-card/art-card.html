@@ -1,0 +1,14 @@
+<app-paper>
+  <div class="card">
+    <img src="{{ art.imagePath }}" class="card-image" alt="Art image" />
+    <div class="card-title">
+      <h2 class="art-title">{{ art.name }}</h2>
+    </div>
+    <div class="card-content">
+      <p class="card-subtitle">{{ art.author }}</p>
+      <div class="card-action">
+        <app-rating />
+      </div>
+    </div>
+  </div>
+</app-paper>

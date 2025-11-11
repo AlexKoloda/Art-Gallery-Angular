@@ -1,0 +1,39 @@
+.card {
+  width: 300px;
+  height: 420px;
+  min-width: 200px;
+  min-height: 300px;
+
+  &-title {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+
+    h4 {
+      color: rgba(0, 0, 0, 0.8);
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &-action {
+    display: flex;
+  }
+
+  &-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  &-subtitle {
+    margin: 0;
+    padding: 0;
+  }
+}
