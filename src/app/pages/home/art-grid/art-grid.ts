@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ArtCard } from '../art-card/art-card';
 import { IArt } from '../../../models/art.model';
-import { ButtonComponent } from '../../../shared/button/button';
 import { Router, RouterLink } from '@angular/router';
 
 //TODO: test art description, replace with API data in feat.
@@ -75,8 +74,9 @@ export class ArtGrid {
     return art.id;
   }
 
-  navigateToDetails(art: IArt) {
-    console.log(art);
-    this.router.navigate(['/details', art.id]);
+  navigateToDetails(art: any) {
+    this.router.navigate(['/details', art.id], {
+      state: { art: art },
+    });
   }
 }
