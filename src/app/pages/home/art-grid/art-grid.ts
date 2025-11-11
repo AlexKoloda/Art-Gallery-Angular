@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ArtCard } from '../art-card/art-card';
 import { IArt } from '../../../models/art.model';
+import { ButtonComponent } from '../../../shared/button/button';
 
 //TODO: test art description, replace with API data in feat.
 const TEST_DESCRIPTION = `

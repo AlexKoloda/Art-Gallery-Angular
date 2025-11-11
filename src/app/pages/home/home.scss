@@ -3,3 +3,13 @@
   grid-template-columns: 280px 1fr;
   min-height: calc(100vh - var(--header-height, 64px) - var(--footer-height, 56px));
 }
+
+.main-action {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem;
+}
