@@ -1,7 +1,15 @@
 <nav class="pagination__container">
   <app-button variant="outline">PREV</app-button>
+
   @for (page of pages; track page) {
-  <button class="pagination__number">{{ page }}</button>
+  <button
+    [ngClass]="{
+      pagination__number: true,
+      'pagination__number--active': page === currentPage
+    }"
+  >
+    {{ page }}
+  </button>
   }
   <app-button variant="outline">NEXT</app-button>
 </nav>

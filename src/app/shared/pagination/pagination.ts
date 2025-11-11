@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ButtonComponent } from '../button/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pagination',
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, CommonModule],
   templateUrl: './pagination.html',
-  styleUrl: './pagination.scss',
+  styleUrls: ['./pagination.scss'],
 })
 export class Pagination {
   // TODO: Test number, replace for API Data later.
+  @Input() currentPage: number = 1;
   totalPages: number = 3;
-  currentPage: number = 1;
 
   pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
 

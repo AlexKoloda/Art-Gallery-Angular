@@ -6,6 +6,15 @@
   }
 
   &__number {
-    border-radius: 100%;
+    background-color: transparent;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+
+    &--active {
+      color: var(--error-color);
+      font-weight: 600;
+      font-size: x-large;
+    }
   }
 }
