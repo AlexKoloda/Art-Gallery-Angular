@@ -1,3 +1,7 @@
-<button [type]="type" [disabled]="disabled" [ngClass]="[variant, size, disabled ? 'disabled' : '']">
+<button
+  [type]="type"
+  [disabled]="disabled"
+  [ngClass]="[variant, size, disabled ? 'disabled' : '', fullWidth ? 'fullWidth' : '']"
+>
   <ng-content></ng-content>
 </button>

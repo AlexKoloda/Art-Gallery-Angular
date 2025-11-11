@@ -1,5 +1,5 @@
 button {
-  width: 100%;
+  width: fit-content;
   border: none;
   cursor: pointer;
   border-radius: 16px;
@@ -62,4 +62,8 @@ button {
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.fullWidth {
+  width: 100%;
 }

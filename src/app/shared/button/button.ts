@@ -15,4 +15,5 @@ export class ButtonComponent {
   @Input() variant: ButtonVariant = 'secondary';
   @Input() size: ButtonSize = 'medium';
   @Input() disabled = false;
+  @Input() fullWidth = false;
 }
