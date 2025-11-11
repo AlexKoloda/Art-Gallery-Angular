@@ -1,0 +1,11 @@
+.pagination {
+  &__container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__number {
+    border-radius: 100%;
+  }
+}

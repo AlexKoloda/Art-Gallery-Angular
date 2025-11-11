@@ -4,11 +4,11 @@
   align-items: center;
   padding: 2rem;
 
-  &-title {
-    padding: 1rem;
+  &__title {
+    margin-bottom: 1rem;
   }
 
-  &-grid {
+  &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
