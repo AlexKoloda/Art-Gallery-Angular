@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ArtCard } from '../art-card/art-card';
 import { IArt } from '../../../models/art.model';
 import { ButtonComponent } from '../../../shared/button/button';
+import { Router, RouterLink } from '@angular/router';
 
 //TODO: test art description, replace with API data in feat.
 const TEST_DESCRIPTION = `
@@ -68,8 +69,14 @@ const TEST_ART_ARRAY: IArt[] = [
 })
 export class ArtGrid {
   arts: IArt[] = TEST_ART_ARRAY;
+  constructor(private router: Router) {}
 
   trackByArtId(index: number, art: IArt): string {
     return art.id;
+  }
+
+  navigateToDetails(art: IArt) {
+    console.log(art);
+    this.router.navigate(['/details', art.id]);
   }
 }

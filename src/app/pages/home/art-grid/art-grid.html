@@ -6,7 +6,7 @@
       <h2>Sorry, no arts</h2>
     </div>
     } @for (art of arts; track art.id ) {
-    <li>
+    <li (click)="navigateToDetails(art)">
       <app-art-card [art]="art"></app-art-card>
     </li>
     }
