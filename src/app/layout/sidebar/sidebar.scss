@@ -10,9 +10,10 @@ aside {
   display: flex;
   flex-direction: column;
   border-radius: 0 12px 12px 0;
-  padding: 16px;
+  padding: 2rem;
   height: 100%;
   overflow-y: auto;
+  z-index: -5;
 }
 
 nav {
@@ -23,19 +24,20 @@ nav {
 }
 
 h3 {
+  padding: 1rem 0;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 8px;
 }
 
 nav > div {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 nav div div {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 20px;
 }
