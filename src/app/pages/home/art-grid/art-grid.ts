@@ -70,10 +70,6 @@ export class ArtGrid {
   arts: IArt[] = TEST_ART_ARRAY;
   constructor(private router: Router) {}
 
-  trackByArtId(index: number, art: IArt): string {
-    return art.id;
-  }
-
   navigateToDetails(art: any) {
     this.router.navigate(['/details', art.id], {
       state: { art: art },

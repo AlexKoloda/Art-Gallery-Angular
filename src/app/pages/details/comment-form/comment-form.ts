@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { ButtonComponent } from '../../../shared/button/button';
 
 @Component({
   selector: 'app-comment-form',
-  imports: [],
+  imports: [ButtonComponent],
   templateUrl: './comment-form.html',
   styleUrl: './comment-form.scss',
 })
-export class CommentForm {
-
-}
+export class CommentForm {}
