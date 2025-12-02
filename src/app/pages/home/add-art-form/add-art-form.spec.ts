@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddArtModal } from './add-art-modal';
+import { AddArtModal } from './add-art-form';
 
 describe('AddArtModal', () => {
   let component: AddArtModal;
@@ -8,9 +8,8 @@ describe('AddArtModal', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddArtModal]
-    })
-    .compileComponents();
+      imports: [AddArtModal],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AddArtModal);
     component = fixture.componentInstance;

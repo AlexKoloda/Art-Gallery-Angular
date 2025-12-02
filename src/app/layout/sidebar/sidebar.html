@@ -10,8 +10,23 @@
     </div>
     <div>
       <h3>Action</h3>
-      <app-button type="button" variant="primary" [fullWidth]="true">Add new category</app-button>
-      <app-button type="button" variant="primary" [fullWidth]="true">Lasted update </app-button>
+      <app-button type="button" variant="primary" [fullWidth]="true" (click)="openModal('category')"
+        >Add new category</app-button
+      >
+      <app-button type="button" variant="primary" [fullWidth]="true" (click)="openModal('log')"
+        >Lasted update
+      </app-button>
     </div>
   </nav>
 </aside>
+
+@if (isModalOpen('category')) {
+<app-dialog title="Add new category" (close)="closeModal('category')">
+  <app-add-category-form (cancel)="closeModal('category')"></app-add-category-form>
+</app-dialog>
+
+} @if (isModalOpen('log')) {
+<app-dialog title="Update info" (close)="closeModal('log')">
+  <app-activity-log-modal (cancel)="closeModal('log')"></app-activity-log-modal>
+</app-dialog>
+}

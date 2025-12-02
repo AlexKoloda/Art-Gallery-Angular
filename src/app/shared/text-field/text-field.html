@@ -1,0 +1,42 @@
+<div
+  class="text-field"
+  [ngClass]="[
+    variant,
+    size,
+    fullWidth ? 'full-width' : '',
+    disable ? 'disabled' : '',
+    error ? 'error' : ''
+  ]"
+>
+  @if (label) {
+  <label class="text-field__label">{{ label }}</label>
+  } @if (select) {
+  <select class="text-field__input" [formControl]="control" [disabled]="disable">
+    <option value="" disabled selected hidden>
+      {{ placeholder }}
+    </option>
+    @for (opt of options; track opt.value) {
+    <option [value]="opt.value">{{ opt.label }}</option>
+    }
+  </select>
+  } @else if (multiline) {
+  <textarea
+    class="text-field__input text-field__textarea"
+    [attr.rows]="minRows"
+    [attr.placeholder]="placeholder"
+    [formControl]="control"
+    [disabled]="disable"
+    [attr.maxRows]="maxRows"
+  ></textarea>
+  } @else {
+  <input
+    class="text-field__input"
+    [type]="type"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [disabled]="disable"
+  />
+  } @if (error && errorMessage) {
+  <div class="text-field__error">{{ errorMessage }}</div>
+  }
+</div>

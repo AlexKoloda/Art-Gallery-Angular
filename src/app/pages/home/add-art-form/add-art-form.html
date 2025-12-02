@@ -1,0 +1,35 @@
+<form class="add-art__form">
+  <div class="add-art__upload">
+    <label class="add-art__upload-box">
+      <input type="file" hidden />
+      <span>Click to upload image</span>
+    </label>
+  </div>
+
+  <div class="add-art__container">
+    <app-text-field label="Name" placeholder="Enter art name"></app-text-field>
+    <app-text-field label="Author" placeholder="Enter author name"></app-text-field>
+    <app-text-field label="Price" placeholder="Enter price"></app-text-field>
+    <app-text-field
+      label="Category"
+      placeholder="Select category"
+      [select]="true"
+      [options]="[
+        { value: 'digital', label: 'Digital Art' },
+        { value: 'traditional', label: 'Traditional Art' },
+        { value: 'photo', label: 'Photography' }
+      ]"
+    ></app-text-field>
+    <app-text-field
+      label="Description"
+      [multiline]="true"
+      [minRows]="3"
+      placeholder="Short description..."
+    ></app-text-field>
+  </div>
+
+  <div class="add-art__actions">
+    <app-button variant="text" size="small" (click)="onClickClose()">Cancel</app-button>
+    <app-button variant="text" size="small">Save</app-button>
+  </div>
+</form>

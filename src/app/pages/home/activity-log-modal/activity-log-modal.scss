@@ -1,0 +1,17 @@
+.log-modal {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__actions {
+    display: flex;
+    padding-top: 10px;
+    justify-content: flex-end;
+  }
+}

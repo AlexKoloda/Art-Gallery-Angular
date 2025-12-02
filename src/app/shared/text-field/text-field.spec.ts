@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddCategoryModal } from './add-category-modal';
+import { TextField } from './text-field';
 
-describe('AddCategoryModal', () => {
-  let component: AddCategoryModal;
-  let fixture: ComponentFixture<AddCategoryModal>;
+describe('TextField', () => {
+  let component: TextField;
+  let fixture: ComponentFixture<TextField>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddCategoryModal]
+      imports: [TextField]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddCategoryModal);
+    fixture = TestBed.createComponent(TextField);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

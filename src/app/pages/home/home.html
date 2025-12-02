@@ -1,11 +1,17 @@
 <div class="page__layout">
   <app-sidebar></app-sidebar>
 
-  <main>
+  <main class="page__content">
     <app-art-grid></app-art-grid>
     <div class="page__action">
-      <app-button size="large" [fullWidth]="true">Add</app-button>
+      <app-button size="large" [fullWidth]="true" (click)="openArtModal()">Add new art</app-button>
       <app-pagination></app-pagination>
     </div>
   </main>
 </div>
+
+@if (isAddArtModalOpen) {
+<app-dialog title="Add new art" (close)="closeArtModal()">
+  <app-add-art-form (cancel)="closeArtModal()"></app-add-art-form>
+</app-dialog>
+}

@@ -1,0 +1,11 @@
+<div class="modal-backdrop" (click)="onClose()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal__header">
+      <h2 class="modal__title">{{ title }}</h2>
+    </div>
+
+    <div class="modal__content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

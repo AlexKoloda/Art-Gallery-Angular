@@ -51,12 +51,17 @@ button {
 }
 
 .text {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   background: transparent;
-  color: #3478f6;
+  color: hsla(0, 0%, 0%, 0.8);
   border: none;
 }
 .text:hover {
-  text-decoration: underline;
+  opacity: 1;
+  text-shadow: 0 0px 30px rgba(0, 0, 0, 0.3);
+  filter: brightness(1.2);
+  color: hsla(0, 0%, 0%, 1);
+  border-bottom-color: #667eea;
 }
 
 .disabled,

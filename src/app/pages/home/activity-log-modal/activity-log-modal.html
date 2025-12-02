@@ -1,1 +1,10 @@
-<p>activity-log-modal works!</p>
+<div class="log-modal">
+  <div class="log-modal__content">
+    @for (log of logs; track log.id) {
+    <app-log-info [log]="log" />
+    }
+  </div>
+  <div class="log-modal__actions">
+    <app-button variant="text" size="small" (click)="onClickClose()">cancel</app-button>
+  </div>
+</div>
