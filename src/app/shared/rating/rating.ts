@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-rating',
@@ -7,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrl: './rating.scss',
 })
 export class Rating {
+  @Input() ratingValue: number = 0;
 
+  stars = [1, 2, 3, 4, 5];
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['ratingValue']) {
+      console.log(
+        'ratingValue changed:',
+        changes['ratingValue'].previousValue,
+        '→',
+        changes['ratingValue'].currentValue
+      );
+    }
+  }
 }

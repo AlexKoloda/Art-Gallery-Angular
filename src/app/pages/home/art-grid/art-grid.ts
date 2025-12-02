@@ -23,7 +23,7 @@ const TEST_ART_ARRAY: IArt[] = [
     location: 'Louvre (paris, france)',
     categoryId: '1',
     imagePath: 'assets/images/dangerous-lunch.jpg',
-    rating: 0,
+    rating: 2,
   },
   {
     id: '2',
@@ -34,7 +34,7 @@ const TEST_ART_ARRAY: IArt[] = [
     location: 'LOUVRE (PARIS, FRANCE)',
     categoryId: '1',
     imagePath: 'assets/images/star-night.jpg',
-    rating: 0,
+    rating: 4,
   },
   {
     id: '3',
@@ -45,7 +45,7 @@ const TEST_ART_ARRAY: IArt[] = [
     location: 'DELL ACCADEMIA (FLORENCE, ITALY)',
     categoryId: '2',
     imagePath: 'assets/images/david.jpg',
-    rating: 0,
+    rating: 5,
   },
   {
     id: '4',

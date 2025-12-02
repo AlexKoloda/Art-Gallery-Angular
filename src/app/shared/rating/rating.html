@@ -1,1 +1,14 @@
-<p>rating works!</p>
+<ul class="rating__list">
+  @for (star of stars; track star) {
+  <li class="rating__item">
+    <img
+      [src]="
+        star <= ratingValue
+          ? 'assets/icons/icon-star-filled.png'
+          : 'assets/icons/icon-star-empty.png'
+      "
+      width="32"
+    />
+  </li>
+  }
+</ul>
