@@ -19,12 +19,14 @@ export class Sidebar {
   }
 
   openModal(modalName: string) {
-    console.log('Opening modal:', modalName);
     this.modalService.open(modalName);
-    console.log('After opening - is open:', this.modalService.isOpen(modalName));
   }
 
   closeModal(modalName: string) {
     this.modalService.close(modalName);
+  }
+
+  clickCategory(categoryName: string) {
+    // TODO: Need fetch current category art from API
   }
 }
