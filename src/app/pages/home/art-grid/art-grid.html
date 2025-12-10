@@ -1,14 +1,17 @@
 <section class="catalog">
   <h2 class="catalog__title">Category name</h2>
+
+  @if (arts.length === 0) {
+  <div class="catalog__container">
+    <h2>Sorry, no arts...</h2>
+  </div>
+  } @else {
   <ul class="catalog__grid">
-    @if (arts.length === 0) {
-    <div>
-      <h2>Sorry, no arts</h2>
-    </div>
-    } @for (art of arts; track art.id ) {
+    @for (art of arts; track art.id ) {
     <li (click)="navigateToDetails(art)">
       <app-art-card [art]="art"></app-art-card>
     </li>
     }
   </ul>
+  }
 </section>
