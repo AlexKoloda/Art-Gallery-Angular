@@ -7,29 +7,40 @@
   </div>
 
   <div class="add-art__container">
-    <app-text-field label="Name" placeholder="Enter art name"></app-text-field>
-    <app-text-field label="Author" placeholder="Enter author name"></app-text-field>
-    <app-text-field label="Price" placeholder="Enter price"></app-text-field>
+    <app-text-field
+      label="Name"
+      placeholder="Enter art name"
+      [formControl]="name"
+      [error]="name.invalid && name.touched"
+      [errorMessage]="getErrorMessage(name)"
+    />
+    <app-text-field label="Author" placeholder="Enter author name" [formControl]="author" />
+    <app-text-field label="Price" [formControl]="price" placeholder="Enter price" />
+
     <app-text-field
       label="Category"
       placeholder="Select category"
       [select]="true"
-      [options]="[
-        { value: 'digital', label: 'Digital Art' },
-        { value: 'traditional', label: 'Traditional Art' },
-        { value: 'photo', label: 'Photography' }
-      ]"
-    ></app-text-field>
+      [options]="categoryOptions"
+      [formControl]="categoryId"
+      [error]="categoryId.invalid && categoryId.touched"
+      [errorMessage]="getErrorMessage(categoryId)"
+    />
     <app-text-field
       label="Description"
-      [multiline]="true"
-      [minRows]="3"
       placeholder="Short description..."
-    ></app-text-field>
+      [minRows]="4"
+      [multiline]="true"
+      [formControl]="description"
+      [error]="description.invalid && description.touched"
+      [errorMessage]="getErrorMessage(description)"
+    />
   </div>
 
   <div class="add-art__actions">
     <app-button variant="text" size="small" (click)="onClickClose()">Cancel</app-button>
-    <app-button variant="text" size="small">Save</app-button>
+    <app-button variant="text" size="small" (click)="onSubmit()" [disabled]="!form.dirty"
+      >Save</app-button
+    >
   </div>
 </form>
