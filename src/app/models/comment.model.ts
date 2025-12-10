@@ -9,3 +9,9 @@ export interface IComment {
   commentValue: string;
   item: IArt;
 }
+
+export interface ICommentDto {
+  itemId: number;
+  commentAuthor: string;
+  commentValue: string;
+}
