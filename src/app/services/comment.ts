@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IComment } from '../models/comment.model';
+import { IComment, ICommentDto } from '../models/comment.model';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -13,10 +13,10 @@ export class CommentService {
   constructor(private http: HttpClient) {}
 
   fetchAllComments(): Observable<IComment[]> {
-    return this.http.get<IComment[]>(this.apiUrl);
+    return this.http.get<IComment[]>(`${this.apiUrl}api/Comment`);
   }
 
-  postNewComment(comment: IComment): Observable<IComment> {
-    return this.http.post<IComment>(this.apiUrl, comment);
+  postNewComment(comment: ICommentDto): Observable<IComment> {
+    return this.http.post<IComment>(`${this.apiUrl}api/Comment`, comment);
   }
 }

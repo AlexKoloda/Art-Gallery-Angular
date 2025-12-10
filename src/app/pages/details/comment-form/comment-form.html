@@ -1,4 +1,27 @@
-<form class="form">
-  <input placeholder="Share a comment" class="form__input" multiple="true" />
-  <app-button variant="primary">post a comment</app-button>
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="form">
+  <app-text-field
+    variant="standard"
+    label="Author Name"
+    placeholder="Type your name"
+    [formControl]="commentAuthor"
+    [error]="commentAuthor.invalid && commentAuthor.touched"
+    [errorMessage]="getErrorMessage(commentAuthor)"
+  />
+  <app-text-field
+    label="Input comment"
+    variant="filled"
+    placeholder="Share your comment"
+    [multiline]="true"
+    [minRows]="4"
+    [formControl]="commentValue"
+    [error]="commentValue.invalid && commentValue.touched"
+    [errorMessage]="getErrorMessage(commentValue)"
+  />
+  <app-button
+    variant="primary"
+    [fullWidth]="true"
+    (click)="onSubmit()"
+    [disabled]="!commentForm.dirty"
+    >post</app-button
+  >
 </form>

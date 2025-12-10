@@ -1,7 +1,16 @@
-.comment__container {
-  background-color: var(--secondary-color);
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+.comment {
+  &__container {
+    background-color: var(--secondary-color);
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  }
+  &__date {
+    font-weight: 600;
+  }
+
+  &__name {
+    padding: 10px 0;
+  }
 }
