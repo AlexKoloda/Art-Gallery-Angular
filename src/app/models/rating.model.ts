@@ -1,11 +1,10 @@
 import { IArt } from './art.model';
 
-export interface IComment {
+export interface IRating {
   id: number;
   createDate: string;
   updateDate: string;
+  ratingValue: number;
   itemId: number;
-  commentAuthor: string;
-  commentValue: string;
   item: IArt;
 }
