@@ -3,7 +3,7 @@ import { IComment } from './comment.model';
 import { IRating } from './rating.model';
 
 export interface IArt {
-  id: string;
+  id: number;
   createDate: string;
   updateDate: string;
   name: string;
