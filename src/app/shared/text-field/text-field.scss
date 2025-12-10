@@ -92,6 +92,8 @@
 
   .text-field__textarea {
     resize: none;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   }
 
   .text-field select.text-field__input {
