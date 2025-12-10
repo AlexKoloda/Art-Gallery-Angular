@@ -1,29 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from '../../shared/button/button';
-import { Dialog } from '../../shared/dialog/dialog';
-import { AddCategoryForm } from '../../pages/home/add-category-form/add-category-form';
 import { ModalService } from '../../services/modal';
-import { ActivityLogModal } from '../../pages/home/activity-log-modal/activity-log-modal';
+import { ICategory } from '../../models/category.model';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [ButtonComponent, Dialog, AddCategoryForm, ActivityLogModal],
+  imports: [ButtonComponent],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
 export class Sidebar {
+  @Input() categories!: ICategory[] | [];
+  @Output() addCategory = new EventEmitter<void>();
+
   constructor(private modalService: ModalService) {}
 
-  isModalOpen(modalName: string): boolean {
-    return this.modalService.isOpen(modalName);
-  }
-
-  openModal(modalName: string) {
-    this.modalService.open(modalName);
-  }
-
-  closeModal(modalName: string) {
-    this.modalService.close(modalName);
+  onAddCategoryClick() {
+    this.addCategory.emit();
   }
 
   clickCategory(categoryName: string) {

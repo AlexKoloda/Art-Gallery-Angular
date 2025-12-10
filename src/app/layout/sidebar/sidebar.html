@@ -2,31 +2,19 @@
   <nav>
     <div>
       <h3>Art categories</h3>
-      <app-button variant="primary" type="button" [fullWidth]="true">TRADITIONAL ART</app-button>
-      <app-button variant="primary" type="button" [fullWidth]="true">DIGITAL ART</app-button>
-      <app-button variant="primary" type="button" [fullWidth]="true">SCULPTURE</app-button>
-      <app-button variant="primary" type="button" [fullWidth]="true">PHOTOGRAPHY</app-button>
-      <app-button variant="primary" type="button" [fullWidth]="true">other</app-button>
+
+      @for(category of categories; track category.id) {
+      <app-button variant="primary" type="button" [fullWidth]="true">{{
+        category.name
+      }}</app-button>
+      }
     </div>
     <div>
       <h3>Action</h3>
-      <app-button type="button" variant="primary" [fullWidth]="true" (click)="openModal('category')"
+      <app-button type="button" variant="primary" [fullWidth]="true" (click)="onAddCategoryClick()"
         >Add new category</app-button
       >
-      <app-button type="button" variant="primary" [fullWidth]="true" (click)="openModal('log')"
-        >Lasted update
-      </app-button>
+      <app-button type="button" variant="primary" [fullWidth]="true">Lasted update </app-button>
     </div>
   </nav>
 </aside>
-
-@if (isModalOpen('category')) {
-<app-dialog title="Add new category" (close)="closeModal('category')">
-  <app-add-category-form (cancel)="closeModal('category')"></app-add-category-form>
-</app-dialog>
-
-} @if (isModalOpen('log')) {
-<app-dialog title="Update info" (close)="closeModal('log')">
-  <app-activity-log-modal (cancel)="closeModal('log')"></app-activity-log-modal>
-</app-dialog>
-}
