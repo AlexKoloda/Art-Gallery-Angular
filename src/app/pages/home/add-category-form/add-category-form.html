@@ -3,9 +3,21 @@
     label="Category name"
     placeholder="Enter the name of the new category"
     variant="outlined"
+    [formControl]="categoryName"
+    [error]="categoryName.invalid && categoryName.touched"
+    errorMessage="Required"
+  />
+
+  <app-text-field
+    label="Description"
+    placeholder="Enter the category description"
+    variant="outlined"
+    [formControl]="categoryDescription"
+    [error]="categoryDescription.invalid && categoryDescription.touched"
+    errorMessage="Required"
   />
   <div class="add-category__actions">
     <app-button variant="text" size="small" (click)="onClickClose()">Cancel</app-button>
-    <app-button variant="text" size="small">Save</app-button>
+    <app-button variant="text" size="small" (click)="onSubmit()">Save</app-button>
   </div>
 </form>
