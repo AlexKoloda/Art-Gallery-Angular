@@ -1,10 +1,14 @@
+@let arts = (arts$ | async) || []; @let categories = (categories$ | async) || [];
+
 <div class="page__layout">
-  <app-sidebar></app-sidebar>
+  <app-sidebar [categories]="categories" (addCategory)="openCategoryModal()"></app-sidebar>
 
   <main class="page__content">
-    <app-art-grid></app-art-grid>
+    <app-art-grid [arts]="arts"></app-art-grid>
     <div class="page__action">
-      <app-button size="large" [fullWidth]="true" (click)="openArtModal()">Add new art</app-button>
+      <app-button size="large" [fullWidth]="true" (click)="openArtModal()">
+        Add new art
+      </app-button>
       <app-pagination></app-pagination>
     </div>
   </main>
@@ -12,6 +16,13 @@
 
 @if (isAddArtModalOpen) {
 <app-dialog title="Add new art" (close)="closeArtModal()">
-  <app-add-art-form (cancel)="closeArtModal()"></app-add-art-form>
+  <app-add-art-form (cancel)="closeArtModal()" [categoriesArray]="categories"></app-add-art-form>
+</app-dialog>
+} @if (isAddCategoryModalOpen) {
+<app-dialog title="Add new category" (close)="closeCategoryModal()">
+  <app-add-category-form
+    (cancel)="closeCategoryModal()"
+    (created)="onCategoryCreated()"
+  ></app-add-category-form>
 </app-dialog>
 }
