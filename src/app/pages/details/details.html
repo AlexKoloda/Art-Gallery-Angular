@@ -1,3 +1,5 @@
+@let comments = (comments$ | async) || [];
+
 <div class="page">
   <section class="details__card">
     <app-art-details />
@@ -5,12 +7,14 @@
   <section class="reviews">
     <div class="reviews__list">
       <h1 class="reviews__title">Reviews</h1>
-      @for (comment of comments; track comment.id) {
+      @if (comments.length <= 0) {
+      <p>This artwork awaits your perspective. Start the conversation.</p>
+      } @for (comment of comments; track comment.id) {
       <li class="reviews__item">
         <app-comment [comment]="comment" />
       </li>
       }
-      <app-comment-form></app-comment-form>
+      <app-comment-form [artId]="artId" (created)="onCommentCreated()"></app-comment-form>
     </div>
   </section>
 </div>
