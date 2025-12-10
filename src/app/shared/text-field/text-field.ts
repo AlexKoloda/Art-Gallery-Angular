@@ -24,7 +24,7 @@ export class TextField {
   @Input() fullWidth = false;
   @Input() disable = false;
   @Input() select = false;
-  @Input() options: { value: string; label: string }[] = [];
+  @Input() options: { value: string | number; label: string }[] = [];
 
   get control(): FormControl {
     if (!this.formControl) {
