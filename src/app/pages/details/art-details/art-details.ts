@@ -1,6 +1,6 @@
 import { IArt } from '../../../models/art.model';
 import { Router } from '@angular/router';
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Rating } from '../../../shared/rating/rating';
 @Component({
@@ -10,6 +10,7 @@ import { Rating } from '../../../shared/rating/rating';
   styleUrl: './art-details.scss',
 })
 export class ArtDetails implements OnInit {
+  @Output() currentArtId = new EventEmitter<number>();
   currentArt: IArt | undefined;
 
   constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: any) {}
@@ -22,6 +23,7 @@ export class ArtDetails implements OnInit {
         console.error('Arts not found in history');
         this.router.navigate(['/']);
       }
+      this.currentArtId.emit(this.currentArt?.id);
     } else {
       return;
     }
