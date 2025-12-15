@@ -1,15 +1,23 @@
-@let arts = (arts$ | async) || []; @let categories = (categories$ | async) || [];
+@let categories = (categories$ | async) || [];
 
 <div class="page__layout">
-  <app-sidebar [categories]="categories" (addCategory)="openCategoryModal()"></app-sidebar>
+  <app-sidebar
+    [categories]="categories"
+    (addCategory)="openCategoryModal()"
+    (categorySelect)="onCategorySelect($event)"
+  ></app-sidebar>
 
   <main class="page__content">
-    <app-art-grid [arts]="arts"></app-art-grid>
+    <app-art-grid [arts]="arts" [categoryName]="categoryName"></app-art-grid>
     <div class="page__action">
       <app-button size="large" [fullWidth]="true" (click)="openArtModal()">
         Add new art
       </app-button>
-      <app-pagination></app-pagination>
+      <app-pagination
+        [currentPage]="currentPage"
+        [totalPages]="totalPages"
+        (pageChange)="onPageChange($event)"
+      ></app-pagination>
     </div>
   </main>
 </div>

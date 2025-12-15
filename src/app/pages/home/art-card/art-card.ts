@@ -12,4 +12,11 @@ import { Paper } from '../../../shared/paper/paper';
 export class ArtCard {
   @Input()
   art!: IArt;
+
+  get ratings() {
+    if (!this.art.ratings || this.art.ratings.length === 0) {
+      return [];
+    }
+    return this.art.ratings;
+  }
 }

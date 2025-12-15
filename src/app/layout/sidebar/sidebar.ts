@@ -12,6 +12,7 @@ import { ICategory } from '../../models/category.model';
 export class Sidebar {
   @Input() categories!: ICategory[] | [];
   @Output() addCategory = new EventEmitter<void>();
+  @Output() categorySelect = new EventEmitter<number | null>();
 
   constructor(private modalService: ModalService) {}
 
@@ -19,7 +20,11 @@ export class Sidebar {
     this.addCategory.emit();
   }
 
-  clickCategory(categoryName: string) {
-    // TODO: Need fetch current category art from API
+  selectAll() {
+    this.categorySelect.emit(null);
+  }
+
+  selectCategory(id: number) {
+    this.categorySelect.emit(id);
   }
 }

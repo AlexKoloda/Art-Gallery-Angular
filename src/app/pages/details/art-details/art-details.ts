@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Component, EventEmitter, Inject, OnInit, Output, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Rating } from '../../../shared/rating/rating';
+import { IRating } from '../../../models/rating.model';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-art-details',
   imports: [Rating],

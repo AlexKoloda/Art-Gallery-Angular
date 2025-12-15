@@ -1,13 +1,13 @@
 <app-paper>
   <div class="card">
-    <img src="{{ art.imagePath }}" class="card__image" alt="Art image" />
+    <img src="{{ art.pictureUrl }}" class="card__image" alt="Art image" />
     <div class="card__title">
       <h2 class="art__title">{{ art.name }}</h2>
     </div>
     <div class="card__content">
       <p class="card__subtitle">{{ art.author }}</p>
       <div class="card__action">
-        <app-rating [ratingValue]="art.rating" />
+        <app-rating [ratings]="ratings"> </app-rating>
       </div>
     </div>
   </div>

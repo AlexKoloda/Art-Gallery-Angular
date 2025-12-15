@@ -16,6 +16,11 @@ export class CommentService {
     return this.http.get<IComment[]>(`${this.apiUrl}api/Comment`);
   }
 
+  fetchCommentsById(artId: number): Observable<IComment[]> {
+    console.log('ID', artId);
+    return this.http.get<IComment[]>(`${this.apiUrl}api/Comment/get-comments-by-item/${artId}`);
+  }
+
   postNewComment(comment: ICommentDto): Observable<IComment> {
     return this.http.post<IComment>(`${this.apiUrl}api/Comment`, comment);
   }

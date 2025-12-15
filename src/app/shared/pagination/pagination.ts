@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from '../button/button';
 import { CommonModule } from '@angular/common';
 
@@ -9,14 +9,32 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./pagination.scss'],
 })
 export class Pagination {
-  // TODO: Test number, replace for API Data later.
   @Input() currentPage: number = 1;
-  totalPages: number = 3;
+  @Input() totalPages: number = 1;
 
-  pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  @Output() pageChange = new EventEmitter<number>();
 
-  setTotalPages(numberOfPages: number) {
-    this.totalPages = numberOfPages;
-    this.pages = Array.from({ length: numberOfPages }, (_, i) => i + 1);
+  get pages(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
+
+  goToPage(page: number) {
+    if (page < 1 || page > this.totalPages) {
+      return;
+    }
+
+    if (page === this.currentPage) {
+      return;
+    }
+
+    this.pageChange.emit(page);
+  }
+
+  goPrev() {
+    this.goToPage(this.currentPage - 1);
+  }
+
+  goNext() {
+    this.goToPage(this.currentPage + 1);
   }
 }

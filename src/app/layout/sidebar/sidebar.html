@@ -4,9 +4,13 @@
       <h3>Art categories</h3>
 
       @for(category of categories; track category.id) {
-      <app-button variant="primary" type="button" [fullWidth]="true">{{
-        category.name
-      }}</app-button>
+      <app-button
+        variant="primary"
+        type="button"
+        [fullWidth]="true"
+        (click)="selectCategory(category.id)"
+        >{{ category.name }}</app-button
+      >
       }
     </div>
     <div>

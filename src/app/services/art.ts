@@ -17,11 +17,21 @@ export class ArtService {
     return this.http.get<IArt[]>(`${this.apiUrl}api/Item`);
   }
 
+  fetchArtsByCategoryPage(categoryId: number, page: number, size: number): Observable<IArt[]> {
+    return this.http.get<IArt[]>(
+      `${this.apiUrl}api/Item/get-items-by-page/categoryId=${categoryId}&page=${page}&size=${size}`
+    );
+  }
+
   fetchCurrentArt(id: string): Observable<IArt> {
     return this.http.get<IArt>(`${this.apiUrl}api/Item${id}`);
   }
 
   postNewArt(art: TAddArtDto): Observable<IArt> {
     return this.http.post<IArt>(`${this.apiUrl}api/Item`, art);
+  }
+
+  searchByName(artName: string): Observable<IArt[]> {
+    return this.http.get<IArt[]>(`${this.apiUrl}api/Item/search/${artName}`);
   }
 }

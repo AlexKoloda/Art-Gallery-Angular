@@ -17,6 +17,10 @@ export class CategoryService {
     return this.http.get<ICategory[]>(`${this.apiUrl}api/Category`);
   }
 
+  fetchCurrentCategory(categoryId: number): Observable<ICategory> {
+    return this.http.get<ICategory>(`${this.apiUrl}api/Category/${categoryId}`);
+  }
+
   postNewCategory(category: TAddCategoryDto): Observable<ICategory> {
     return this.http.post<ICategory>(`${this.apiUrl}api/Category`, category);
   }

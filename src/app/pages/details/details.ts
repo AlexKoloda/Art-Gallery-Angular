@@ -14,24 +14,23 @@ import { AsyncPipe, isPlatformBrowser } from '@angular/common';
   styleUrl: './details.scss',
 })
 export class Details implements OnInit {
-  artId: number = 0;
-  comments$: Observable<IComment[]>;
+  artId!: number;
+  comments$: Observable<IComment[]> | undefined;
 
   constructor(
     private commentService: CommentService,
     @Inject(PLATFORM_ID) private platformId: any
-  ) {
-    this.comments$ = commentService.fetchAllComments();
-  }
+  ) {}
 
   onCommentCreated() {
-    this.comments$ = this.commentService.fetchAllComments();
+    this.comments$ = this.commentService.fetchCommentsById(this.artId);
   }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       const art = history.state.art;
       this.artId = art.id;
+      this.comments$ = this.commentService.fetchCommentsById(this.artId);
     }
   }
 }

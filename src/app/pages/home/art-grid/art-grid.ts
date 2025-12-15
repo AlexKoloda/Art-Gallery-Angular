@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ArtGrid {
   @Input() arts!: IArt[] | [];
+  @Input() categoryName!: string;
 
   constructor(private router: Router) {}
 
