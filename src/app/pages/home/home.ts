@@ -16,6 +16,7 @@ import { AddCategoryForm } from './add-category-form/add-category-form';
 
 import { ArtService } from '../../services/art.service';
 import { CategoryService } from '../../services/category.service';
+import { ToastService } from '../../shared/toast/toast.service';
 
 type Mode = 'all' | 'category';
 
@@ -52,7 +53,11 @@ export class Home {
   isAddArtModalOpen = false;
   isAddCategoryModalOpen = false;
 
-  constructor(private artService: ArtService, private categoryService: CategoryService) {}
+  constructor(
+    private artService: ArtService,
+    private categoryService: CategoryService,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit() {
     this.categories$ = this.categoryService.fetchAllCategory();
@@ -67,6 +72,7 @@ export class Home {
       this.allArts = arts;
       this.totalPages = Math.max(1, Math.ceil(this.allArts.length / this.pageSize));
       this.setPageOnClient(1);
+      this.toastService.success('Arts successful loaded');
     });
   }
 
@@ -88,7 +94,7 @@ export class Home {
         this.totalPages = arts.length < this.pageSize ? page : page + 1;
       },
       error: (err) => {
-        console.error('Error loads arts:', err);
+        this.toastService.error('Error load arts');
         this.arts = [];
       },
     });
