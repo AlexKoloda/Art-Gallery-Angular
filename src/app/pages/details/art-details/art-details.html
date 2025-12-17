@@ -24,7 +24,7 @@
 
       <div class="details__row">
         <h2 class="details__title">Rating</h2>
-        <app-rating [ratings]="currentArt?.ratings || []"></app-rating>
+        <app-rating [artId]="currentArt?.id || 0"></app-rating>
       </div>
     </div>
   </div>
