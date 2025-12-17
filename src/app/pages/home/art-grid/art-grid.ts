@@ -15,7 +15,7 @@ export class ArtGrid {
 
   constructor(private router: Router) {}
 
-  navigateToDetails(art: any) {
+  navigateToDetails(art: IArt) {
     this.router.navigate(['/details', art.id], {
       state: { art: art },
     });
