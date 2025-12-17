@@ -17,6 +17,8 @@ import { AddCategoryForm } from './add-category-form/add-category-form';
 import { ArtService } from '../../services/art.service';
 import { CategoryService } from '../../services/category.service';
 import { ToastService } from '../../shared/toast/toast.service';
+import { error } from 'console';
+import { ErrorService } from '../../services/error.service';
 
 type Mode = 'all' | 'category';
 
@@ -56,7 +58,8 @@ export class Home {
   constructor(
     private artService: ArtService,
     private categoryService: CategoryService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private errService: ErrorService
   ) {}
 
   ngOnInit() {
@@ -68,11 +71,17 @@ export class Home {
     this.mode = 'all';
     this.currentCategoryId = null;
 
-    this.artService.fetchAllArts().subscribe((arts) => {
-      this.allArts = arts;
-      this.totalPages = Math.max(1, Math.ceil(this.allArts.length / this.pageSize));
-      this.setPageOnClient(1);
-      this.toastService.success('Arts successful loaded');
+    this.artService.fetchAllArts().subscribe({
+      next: (arts) => {
+        this.allArts = arts;
+        this.totalPages = Math.max(1, Math.ceil(this.allArts.length / this.pageSize));
+        this.setPageOnClient(1);
+        this.toastService.success('Arts successful loaded');
+      },
+      error: (err) => {
+        this.toastService.error(this.errService.parseError(err.status));
+        this.arts = [];
+      },
     });
   }
 
@@ -92,9 +101,10 @@ export class Home {
       next: (arts) => {
         this.arts = arts;
         this.totalPages = arts.length < this.pageSize ? page : page + 1;
+        this.toastService.success(`${this.categoryName} successful loaded`);
       },
       error: (err) => {
-        this.toastService.error('Error load arts');
+        this.toastService.error(`${this.categoryName} ${this.errService.parseError(err.status)}`);
         this.arts = [];
       },
     });

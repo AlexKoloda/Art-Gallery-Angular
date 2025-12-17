@@ -3,9 +3,11 @@ import { ArtDetails } from './art-details/art-details';
 import { IComment } from '../../models/comment.model';
 import { Comment } from '../../shared/comment/comment';
 import { CommentForm } from './comment-form/comment-form';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { CommentService } from '../../services/comment.service';
 import { AsyncPipe, isPlatformBrowser } from '@angular/common';
+import { ToastService } from '../../shared/toast/toast.service';
+import { ErrorService } from '../../services/error.service';
 
 @Component({
   selector: 'app-details',
@@ -19,6 +21,8 @@ export class Details implements OnInit {
 
   constructor(
     private commentService: CommentService,
+    private toastService: ToastService,
+    private ErrService: ErrorService,
     @Inject(PLATFORM_ID) private platformId: any
   ) {}
 
@@ -30,7 +34,15 @@ export class Details implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       const art = history.state.art;
       this.artId = art.id;
-      this.comments$ = this.commentService.fetchCommentsById(this.artId);
+      this.comments$ = this.commentService.fetchCommentsById(this.artId).pipe(
+        catchError((err) => {
+          if (err.status === 404) {
+            return of([]);
+          }
+          this.toastService.error(`${this.ErrService.parseError(err.status)}`);
+          return of([]);
+        })
+      );
     }
   }
 }

@@ -5,6 +5,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ICategory } from '../../../models/category.model';
 import { ArtService } from '../../../services/art.service';
+import { ErrorService } from '../../../services/error.service';
+import { ToastService } from '../../../shared/toast/toast.service';
 
 export type TAddArtDto = {
   name: string;
@@ -28,7 +30,11 @@ export class AddArtForm {
   @Output() cancel = new EventEmitter<void>();
   @Input() categoriesArray!: ICategory[] | [];
 
-  constructor(private artService: ArtService) {}
+  constructor(
+    private artService: ArtService,
+    private errService: ErrorService,
+    private toastService: ToastService
+  ) {}
 
   name = new FormControl<string>('', {
     nonNullable: true,
@@ -134,9 +140,10 @@ export class AddArtForm {
       next: () => {
         this.form.reset();
         this.cancel.emit();
+        this.toastService.success(`${formData.name} successful created`);
       },
       error: (err) => {
-        console.error(err);
+        this.toastService.error(this.errService.parseError(err.status));
       },
     });
   }

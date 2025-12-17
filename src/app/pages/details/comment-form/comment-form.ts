@@ -4,6 +4,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommentService } from '../../../services/comment.service';
 import { TextField } from '../../../shared/text-field/text-field';
 import { IComment } from '../../../models/comment.model';
+import { ToastService } from '../../../shared/toast/toast.service';
+import { ErrorService } from '../../../services/error.service';
 
 type CommentFormGroup = {
   authorName: FormControl<string>;
@@ -20,7 +22,11 @@ export class CommentForm {
   @Input() artId!: number;
   @Output() created = new EventEmitter<IComment>();
 
-  constructor(private commentService: CommentService) {}
+  constructor(
+    private commentService: CommentService,
+    private toastService: ToastService,
+    private errService: ErrorService
+  ) {}
 
   commentForm = new FormGroup<CommentFormGroup>({
     authorName: new FormControl<string>('', {
@@ -84,7 +90,9 @@ export class CommentForm {
         this.commentForm.reset();
         this.created.emit(comment);
       },
-      error: (error) => console.error('Error', error),
+      error: (err) => {
+        this.toastService.error(`${this.errService.parseError(err.status)}`);
+      },
     });
   }
 }
