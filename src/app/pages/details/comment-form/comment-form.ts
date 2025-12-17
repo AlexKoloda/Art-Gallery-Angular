@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommentService } from '../../../services/comment';
+import { CommentService } from '../../../services/comment.service';
 import { TextField } from '../../../shared/text-field/text-field';
 import { IComment } from '../../../models/comment.model';
 

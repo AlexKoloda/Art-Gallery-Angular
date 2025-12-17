@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from '../../shared/button/button';
-import { ModalService } from '../../services/modal';
+import { ModalService } from '../../services/modal.service';
 import { ICategory } from '../../models/category.model';
 
 @Component({

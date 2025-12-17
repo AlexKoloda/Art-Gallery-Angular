@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { TextField } from '../../../shared/text-field/text-field';
 import { ButtonComponent } from '../../../shared/button/button';
 import { FormControl, Validators } from '@angular/forms';
-import { CategoryService } from '../../../services/category';
+import { CategoryService } from '../../../services/category.service';
 import { ICategory } from '../../../models/category.model';
 
 export type TAddCategoryDto = {

@@ -17,7 +17,6 @@ export class CommentService {
   }
 
   fetchCommentsById(artId: number): Observable<IComment[]> {
-    console.log('ID', artId);
     return this.http.get<IComment[]>(`${this.apiUrl}api/Comment/get-comments-by-item/${artId}`);
   }
 

@@ -4,7 +4,7 @@ import { IComment } from '../../models/comment.model';
 import { Comment } from '../../shared/comment/comment';
 import { CommentForm } from './comment-form/comment-form';
 import { Observable } from 'rxjs';
-import { CommentService } from '../../services/comment';
+import { CommentService } from '../../services/comment.service';
 import { AsyncPipe, isPlatformBrowser } from '@angular/common';
 
 @Component({
