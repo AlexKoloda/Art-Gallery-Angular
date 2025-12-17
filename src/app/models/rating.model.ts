@@ -8,3 +8,8 @@ export interface IRating {
   itemId: number;
   item: IArt;
 }
+
+export type TRatingAdd = {
+  itemId: number;
+  ratingValue: number;
+};

@@ -1,6 +1,6 @@
 <ul class="rating__list">
   @for (star of stars; track star) {
-  <li class="rating__item">
+  <li class="rating__item" (click)="onStarClick(star)">
     <img
       [src]="
         star <= averageRating
@@ -8,6 +8,7 @@
           : 'assets/icons/icon-star-empty.png'
       "
       width="32"
+      class="rating__star"
     />
   </li>
   }

@@ -6,4 +6,11 @@
     gap: 1rem;
     list-style: none;
   }
+
+  &__star {
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
 }
