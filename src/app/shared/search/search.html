@@ -1,5 +1,22 @@
 <form class="search">
   <img src="assets/icons/search-icon.png" alt="Search icon" class="search__icon" />
-  <!-- <label class="search-label">Search</label> -->
-  <input class="search__input" placeholder="Search" />
+  <input [formControl]="search" class="search__input" placeholder="Search by name or category" />
+
+  @if (searchResults.length > 0 ) {
+  <div class="search__dropdown">
+    <h4>Search results by {{ search.value }}</h4>
+    @for (art of searchResults; track art.id; let i = $index) {
+    <div class="search__container" (click)="navigateToDetails(art)">
+      <span class="search__title">{{ i + 1 }}.</span>
+      <p><span class="search__title">Art name: </span>{{ art.name }}</p>
+      <p><span class="search__title">Author name: </span>{{ art.author }}</p>
+      <p><span class="search__title">Art price: </span>{{ art.price }}$</p>
+    </div>
+    }
+  </div>
+  }@else if (searchResults.length === 0 && search.value){
+  <div class="search__dropdown">
+    <h4>No arts found</h4>
+  </div>
+  }
 </form>
