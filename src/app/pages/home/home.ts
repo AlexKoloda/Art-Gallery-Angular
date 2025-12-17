@@ -6,14 +6,16 @@ import { ButtonComponent } from '../../shared/button/button';
 
 import { Dialog } from '../../shared/dialog/dialog';
 import { AddArtForm } from './add-art-form/add-art-form';
-import { ArtService } from '../../services/art';
+
 import { Observable } from 'rxjs';
 import { IArt } from '../../models/art.model';
 import { AsyncPipe } from '@angular/common';
 import { ICategory } from '../../models/category.model';
-import { CategoryService } from '../../services/category';
+
 import { AddCategoryForm } from './add-category-form/add-category-form';
-import { error } from 'console';
+
+import { ArtService } from '../../services/art.service';
+import { CategoryService } from '../../services/category.service';
 
 type Mode = 'all' | 'category';
 

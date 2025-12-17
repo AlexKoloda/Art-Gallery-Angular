@@ -2,8 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button';
 import { TextField } from '../../../shared/text-field/text-field';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ArtService } from '../../../services/art';
+
 import { ICategory } from '../../../models/category.model';
+import { ArtService } from '../../../services/art.service';
 
 export type TAddArtDto = {
   name: string;
