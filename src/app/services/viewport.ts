@@ -4,9 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ViewportService {
-  isMobile = window.innerWidth < 900;
+  isMobile = false;
 
   constructor() {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    this.isMobile = window.innerWidth < 768;
     window.addEventListener('resize', () => {
       this.isMobile = window.innerWidth < 768;
     });
