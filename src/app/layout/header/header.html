@@ -8,5 +8,16 @@
       <li class="header__item"><a class="header__link" href="/">Main</a></li>
       <li class="header__item"><a class="header__link" href="#">Contact</a></li>
     </ul>
+    @if (isMobile) {
+    <button class="header__button-mob">
+      <img
+        src="assets/icons/menu-icon.png"
+        alt="Menu icon"
+        class="header__menu-mob"
+        width="32px"
+        (click)="onMenuClick()"
+      />
+    </button>
+    }
   </nav>
 </header>

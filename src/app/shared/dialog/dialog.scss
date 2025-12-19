@@ -62,9 +62,10 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 900px) {
   .modal {
-    width: 94%;
+    width: 90%;
+    max-height: none;
     border-radius: 12px;
   }
 

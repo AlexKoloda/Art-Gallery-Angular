@@ -55,10 +55,40 @@
   }
 
   &__description {
-    max-width: 380px;
+    max-width: 30rem;
   }
 }
 
 .location {
   font-size: small;
+}
+
+@media (max-width: 950px) {
+  .details {
+    &__wrapper {
+      flex-direction: column;
+      max-width: 360px;
+    }
+
+    &__image {
+      max-width: 355px;
+    }
+    &__title {
+      font-size: 1.2rem;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+      color: hsla(0, 0%, 0%, 0.6);
+    }
+
+    &__description {
+      font-size: 1rem;
+    }
+
+    &__price {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+  }
 }

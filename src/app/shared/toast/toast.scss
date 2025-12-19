@@ -25,7 +25,7 @@
   }
 
   &__message {
-    font-size: 18px;
+    font-size: 1rem;
     margin: 0;
     line-height: 1.4;
   }
@@ -34,6 +34,45 @@
   &.error,
   &.info {
     background-color: #f4f3f3;
+  }
+}
+
+@media (max-width: 900px) {
+  .toast {
+    width: 250px;
+    height: 25px;
+    animation: toastSlideInMob 0.3s ease forwards;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    z-index: 9999;
+  }
+
+  .toast--exiting {
+    animation: toastSlideOutMob 0.3s ease forwards;
+  }
+}
+
+@keyframes toastSlideInMob {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes toastSlideOutMob {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100%);
   }
 }
 

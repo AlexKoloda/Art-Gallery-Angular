@@ -31,3 +31,33 @@
     margin: 0;
   }
 }
+
+@media (max-width: 950px) {
+  .footer {
+    gap: 10px;
+    font-size: 1rem;
+    padding: 1rem;
+    align-items: flex-start;
+
+    &__logo {
+      gap: 5px;
+      align-items: center;
+
+      h4 {
+        font-size: 0.7rem;
+      }
+    }
+
+    &__icon {
+      max-width: 20px;
+    }
+
+    &__link {
+      font-size: 0.5rem;
+    }
+
+    &__nav {
+      padding: 0;
+    }
+  }
+}

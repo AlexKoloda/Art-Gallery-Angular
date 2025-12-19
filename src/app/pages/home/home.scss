@@ -13,3 +13,14 @@
   padding: 2rem;
   gap: 2rem;
 }
+
+@media (max-width: 950px) {
+  .page__layout {
+    display: flex;
+    justify-content: center;
+  }
+
+  .page__action {
+    flex-direction: column-reverse;
+  }
+}

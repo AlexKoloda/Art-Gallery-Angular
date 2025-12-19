@@ -1,24 +1,58 @@
-<aside>
-  <nav>
-    <div>
-      <h3>Art categories</h3>
-
-      @for(category of categories; track category.id) {
+<aside
+  [ngClass]="isMobile ? 'sidebarMob' : 'sidebar'"
+  [class.sidebarMob--open]="isMobile && (isOpen$ | async)"
+>
+  <nav class="sidebar__nav">
+    <div class="sidebar__section">
+      <div [ngClass]="isMobile ? 'sidebarMob__container' : 'sidebar__container'">
+        <h3 [ngClass]="isMobile ? 'sidebarMob__title' : 'sidebar__title'">Art categories</h3>
+        @if(isMobile) {
+        <button class="sidebarMob__button" (click)="closeMobileSidebar()">
+          <img src="assets/icons/close-icon.png" alt="Close icon" width="20" />
+        </button>
+        }
+      </div>
+      @for (category of categories; track category.id) {
       <app-button
         variant="primary"
         type="button"
         [fullWidth]="true"
+        [size]="isMobile ? 'small' : 'medium'"
         (click)="selectCategory(category.id)"
-        >{{ category.name }}</app-button
       >
+        {{ category.name }}
+      </app-button>
       }
     </div>
-    <div>
-      <h3>Action</h3>
-      <app-button type="button" variant="primary" [fullWidth]="true" (click)="onAddCategoryClick()"
-        >Add new category</app-button
+
+    <div class="sidebar__section">
+      <h3 [ngClass]="isMobile ? 'sidebarMob__title' : 'sidebar__title'">Action</h3>
+
+      <app-button
+        type="button"
+        variant="primary"
+        [fullWidth]="true"
+        [size]="isMobile ? 'small' : 'medium'"
+        (click)="onAddCategoryClick()"
       >
-      <app-button type="button" variant="primary" [fullWidth]="true">Lasted update </app-button>
+        Add new category
+      </app-button>
+
+      <app-button
+        type="button"
+        variant="primary"
+        [fullWidth]="true"
+        [size]="isMobile ? 'small' : 'medium'"
+        (click)="openActivityLogModal()"
+      >
+        Lasted update
+      </app-button>
     </div>
   </nav>
 </aside>
+
+@if (isModalOpen('activityLogModal')) {
+<app-dialog title="Lasted update" (close)="closeActivityModal()">
+  <app-activity-log-modal (cancel)="closeActivityModal()"></app-activity-log-modal>
+</app-dialog>
+}

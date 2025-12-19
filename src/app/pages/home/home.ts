@@ -17,8 +17,9 @@ import { AddCategoryForm } from './add-category-form/add-category-form';
 import { ArtService } from '../../services/art.service';
 import { CategoryService } from '../../services/category.service';
 import { ToastService } from '../../shared/toast/toast.service';
-import { error } from 'console';
 import { ErrorService } from '../../services/error.service';
+import { ModalService } from '../../services/modal.service';
+import { ViewportService } from '../../services/viewport';
 
 type Mode = 'all' | 'category';
 
@@ -52,15 +53,18 @@ export class Home {
 
   currentCategoryId: number | null = null;
 
-  isAddArtModalOpen = false;
-  isAddCategoryModalOpen = false;
-
   constructor(
     private artService: ArtService,
     private categoryService: CategoryService,
+    private modalService: ModalService,
     private toastService: ToastService,
-    private errService: ErrorService
+    private errService: ErrorService,
+    private viewport: ViewportService
   ) {}
+
+  get isMobile(): boolean {
+    return this.viewport.isMobile;
+  }
 
   ngOnInit() {
     this.categories$ = this.categoryService.fetchAllCategory();
@@ -134,19 +138,23 @@ export class Home {
   }
 
   openArtModal() {
-    this.isAddArtModalOpen = true;
+    this.modalService.open('addArt');
   }
 
   closeArtModal() {
-    this.isAddArtModalOpen = false;
+    this.modalService.close('addArt');
   }
 
   openCategoryModal() {
-    this.isAddCategoryModalOpen = true;
+    this.modalService.open('categoryModal');
   }
 
   closeCategoryModal() {
-    this.isAddCategoryModalOpen = false;
+    this.modalService.close('categoryModal');
+  }
+
+  isModalOpen(name: string): boolean {
+    return this.modalService.isOpen(name);
   }
 
   onCategoryCreated() {

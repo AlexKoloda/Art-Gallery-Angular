@@ -12,3 +12,13 @@
     pointer-events: auto;
   }
 }
+.toast-container {
+  @media (max-width: 900px) {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    align-items: center;
+  }
+}

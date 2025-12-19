@@ -36,10 +36,38 @@
       color: #667eea;
     }
   }
+
+  &__logo {
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
 }
 
-.header__logo {
-  color: black;
-  text-decoration: none;
-  text-transform: uppercase;
+@media (max-width: 950px) {
+  .header {
+    padding: 1rem;
+
+    &__title {
+      font-size: 1.2rem;
+      max-width: 100px;
+    }
+    &__list {
+      display: none;
+    }
+
+    &__button-mob {
+      transition: 0.3s;
+      background-color: transparent;
+      border: none;
+      width: 100px;
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+
+    &__menu-mob {
+      user-select: none;
+    }
+  }
 }

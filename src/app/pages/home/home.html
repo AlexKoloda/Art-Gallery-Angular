@@ -22,11 +22,12 @@
   </main>
 </div>
 
-@if (isAddArtModalOpen) {
+@if (isModalOpen('addArt')) {
 <app-dialog title="Add new art" (close)="closeArtModal()">
   <app-add-art-form (cancel)="closeArtModal()" [categoriesArray]="categories"></app-add-art-form>
 </app-dialog>
-} @if (isAddCategoryModalOpen) {
+
+} @if (isModalOpen('categoryModal')) {
 <app-dialog title="Add new category" (close)="closeCategoryModal()">
   <app-add-category-form
     (cancel)="closeCategoryModal()"
