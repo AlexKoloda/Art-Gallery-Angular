@@ -5,15 +5,17 @@
     <app-art-details />
   </section>
   <section class="reviews">
-    <div class="reviews__list">
+    <div>
       <h1 class="reviews__title">Reviews</h1>
-      @if (comments.length <= 0) {
-      <p>This artwork awaits your perspective. Start the conversation.</p>
-      } @for (comment of comments; track comment.id) {
-      <li class="reviews__item">
-        <app-comment [comment]="comment" />
-      </li>
-      }
+      <ul class="reviews__list">
+        @if (comments.length <= 0) {
+        <p>This artwork awaits your perspective. Start the conversation.</p>
+        } @for (comment of comments; track comment.commentValue) {
+        <li class="reviews__item">
+          <app-comment [comment]="comment" />
+        </li>
+        }
+      </ul>
       <app-comment-form [artId]="artId" (created)="onCommentCreated()"></app-comment-form>
     </div>
   </section>
