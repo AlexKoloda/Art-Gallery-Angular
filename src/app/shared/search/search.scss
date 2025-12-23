@@ -2,8 +2,7 @@
   display: flex;
   position: relative;
   align-items: center;
-  min-width: 600px;
-  max-width: 1000px;
+  min-width: 1300px;
   width: 100%;
   background-color: white;
   border-radius: 10px;
@@ -34,7 +33,7 @@
 
   &__dropdown {
     position: absolute;
-    width: 96%;
+    width: 97%;
     top: 100%;
     left: 0;
     margin-top: 10px;
@@ -66,6 +65,24 @@
     min-width: 0;
     padding: 5px;
     max-width: 100px;
+
+    &__dropdown {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      width: 88%;
+      margin: 0 auto;
+      left: 5px;
+      top: 90px;
+    }
+  }
+}
+
+@media (max-width: 1500px) and (min-width: 960px) {
+  .search {
+    min-width: 400px;
+    padding: 5px;
+    max-width: 1000px;
 
     &__dropdown {
       position: fixed;
