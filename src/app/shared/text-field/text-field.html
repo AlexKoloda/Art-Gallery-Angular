@@ -6,21 +6,23 @@
   <label class="text-field__label">{{ label }}</label>
   } @if (select) {
   <select class="text-field__input" [formControl]="control">
-    <option value="" selected hidden>
+    @if (placeholder) {
+    <option [ngValue]="null" hidden>
       {{ placeholder }}
     </option>
-    @for (opt of options; track opt.value) {
-    <option [value]="opt.value">{{ opt.label }}</option>
+    } @for (opt of options; track opt.value) {
+    <option [ngValue]="opt.value">{{ opt.label }}</option>
     }
   </select>
+
   } @else if (multiline) {
   <textarea
     class="text-field__input text-field__textarea"
     [attr.rows]="minRows"
-    [attr.placeholder]="placeholder"
+    [placeholder]="placeholder"
     [formControl]="control"
-    [attr.maxRows]="maxRows"
   ></textarea>
+
   } @else {
   <input
     class="text-field__input"
