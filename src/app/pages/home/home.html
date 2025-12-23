@@ -34,4 +34,6 @@
     (created)="onCategoryCreated()"
   ></app-add-category-form>
 </app-dialog>
+} @if (isPageLoading) {
+<app-loading></app-loading>
 }
