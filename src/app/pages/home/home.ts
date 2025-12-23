@@ -104,18 +104,22 @@ export class Home {
   }
 
   private loadCategoryPage(categoryId: number, page: number) {
+    this.isPageLoading = true;
     this.mode = 'category';
     this.currentCategoryId = categoryId;
     this.currentPage = page;
+    this.loadCategoryName(categoryId);
 
     this.artService.fetchArtsByCategoryPage(categoryId, page, this.pageSize).subscribe({
       next: (arts) => {
         this.arts = arts;
         this.totalPages = arts.length < this.pageSize ? page : page + 1;
+        this.isPageLoading = false;
         this.toastService.success(`${this.categoryName} successful loaded`);
       },
       error: (err) => {
-        this.toastService.error(`${this.categoryName} ${this.errService.parseError(err.status)}`);
+        this.isPageLoading = false;
+        this.toastService.error(`Arts ${this.errService.parseError(err.status)}`);
         this.arts = [];
       },
     });
