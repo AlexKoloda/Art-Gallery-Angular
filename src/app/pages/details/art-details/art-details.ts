@@ -21,8 +21,6 @@ export class ArtDetails implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.currentArt = history.state.art;
 
-      console.log(this.currentArt);
-
       if (!this.currentArt) {
         console.error('Arts not found in history');
         this.router.navigate(['/']);
