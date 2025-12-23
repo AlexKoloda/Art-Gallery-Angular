@@ -14,14 +14,8 @@ export class Pagination {
 
   @Output() pageChange = new EventEmitter<number>();
 
-  constructor(private scroller: ViewportScroller) {}
-
   get pages(): number[] {
     return Array.from({ length: this.totalPages }, (_, i) => i + 1);
-  }
-
-  scrollUp() {
-    this.scroller.scrollToPosition([0, 0]);
   }
 
   goToPage(page: number) {
@@ -38,12 +32,9 @@ export class Pagination {
 
   goPrev() {
     this.goToPage(this.currentPage - 1);
-
-    this.scrollUp();
   }
 
   goNext() {
     this.goToPage(this.currentPage + 1);
-    this.scrollUp();
   }
 }

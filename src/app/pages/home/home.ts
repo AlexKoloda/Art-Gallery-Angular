@@ -9,7 +9,7 @@ import { AddArtForm } from './add-art-form/add-art-form';
 
 import { Observable } from 'rxjs';
 import { IArt } from '../../models/art.model';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, ViewportScroller } from '@angular/common';
 import { ICategory } from '../../models/category.model';
 
 import { AddCategoryForm } from './add-category-form/add-category-form';
@@ -63,7 +63,8 @@ export class Home {
     private modalService: ModalService,
     private toastService: ToastService,
     private errService: ErrorService,
-    private viewport: ViewportService
+    private viewport: ViewportService,
+    private scroller: ViewportScroller
   ) {}
 
   get isMobile(): boolean {
@@ -137,6 +138,7 @@ export class Home {
     } else if (this.mode === 'category' && this.currentCategoryId !== null) {
       this.loadCategoryPage(this.currentCategoryId, page);
     }
+    this.scrollUp();
   }
 
   onCategorySelect(categoryId: number | null) {
@@ -171,5 +173,11 @@ export class Home {
   onCategoryCreated() {
     this.categories$ = this.categoryService.fetchAllCategory();
     this.closeCategoryModal();
+  }
+
+  scrollUp() {
+    setTimeout(() => {
+      this.scroller.scrollToPosition([0, 0]);
+    });
   }
 }
