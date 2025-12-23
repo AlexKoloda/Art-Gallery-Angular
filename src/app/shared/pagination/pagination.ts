@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from '../button/button';
-import { CommonModule } from '@angular/common';
+import { CommonModule, ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-pagination',
@@ -14,8 +14,14 @@ export class Pagination {
 
   @Output() pageChange = new EventEmitter<number>();
 
+  constructor(private scroller: ViewportScroller) {}
+
   get pages(): number[] {
     return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
+
+  scrollUp() {
+    this.scroller.scrollToPosition([0, 0]);
   }
 
   goToPage(page: number) {
@@ -32,9 +38,12 @@ export class Pagination {
 
   goPrev() {
     this.goToPage(this.currentPage - 1);
+
+    this.scrollUp();
   }
 
   goNext() {
     this.goToPage(this.currentPage + 1);
+    this.scrollUp();
   }
 }

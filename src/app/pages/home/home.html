@@ -13,11 +13,14 @@
       <app-button size="large" [fullWidth]="true" (click)="openArtModal()">
         Add new art
       </app-button>
+      @if (arts.length !== 0) {
+
       <app-pagination
         [currentPage]="currentPage"
         [totalPages]="totalPages"
         (pageChange)="onPageChange($event)"
       ></app-pagination>
+      }
     </div>
   </main>
 </div>
