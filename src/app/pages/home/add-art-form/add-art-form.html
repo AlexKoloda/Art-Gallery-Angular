@@ -10,19 +10,19 @@
     <app-text-field
       label="Name"
       placeholder="Enter art name"
-      [formControl]="name"
+      [control]="name"
       [error]="name.invalid && name.touched"
       [errorMessage]="getErrorMessage(name)"
     />
-    <app-text-field label="Author" placeholder="Enter author name" [formControl]="author" />
-    <app-text-field label="Price" [formControl]="price" placeholder="Enter price" />
+    <app-text-field label="Author" placeholder="Enter author name" [control]="author" />
+    <app-text-field label="Price" [control]="price" placeholder="Enter price" />
 
     <app-text-field
       label="Category"
       placeholder="Select category"
       [select]="true"
       [options]="categoryOptions"
-      [formControl]="categoryId"
+      [control]="categoryId"
       [error]="categoryId.invalid && categoryId.touched"
       [errorMessage]="getErrorMessage(categoryId)"
     />
@@ -31,7 +31,7 @@
       placeholder="Short description..."
       [minRows]="4"
       [multiline]="true"
-      [formControl]="description"
+      [control]="description"
       [error]="description.invalid && description.touched"
       [errorMessage]="getErrorMessage(description)"
     />

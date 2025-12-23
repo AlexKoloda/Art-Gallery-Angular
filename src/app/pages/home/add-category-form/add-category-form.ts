@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { TextField } from '../../../shared/text-field/text-field';
 import { ButtonComponent } from '../../../shared/button/button';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CategoryService } from '../../../services/category.service';
 import { ICategory } from '../../../models/category.model';
 import { ErrorService } from '../../../services/error.service';
@@ -14,7 +14,7 @@ export type TAddCategoryDto = {
 
 @Component({
   selector: 'app-add-category-form',
-  imports: [TextField, ButtonComponent],
+  imports: [TextField, ButtonComponent, ReactiveFormsModule],
   templateUrl: './add-category-form.html',
   styleUrl: './add-category-form.scss',
 })

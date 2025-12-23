@@ -3,7 +3,7 @@
     label="Category name"
     placeholder="Enter the name of the new category"
     variant="outlined"
-    [formControl]="categoryName"
+    [control]="categoryName"
     [error]="categoryName.invalid && categoryName.touched"
     errorMessage="Required"
   />
@@ -12,7 +12,7 @@
     label="Description"
     placeholder="Enter the category description"
     variant="outlined"
-    [formControl]="categoryDescription"
+    [control]="categoryDescription"
     [error]="categoryDescription.invalid && categoryDescription.touched"
     errorMessage="Required"
   />
