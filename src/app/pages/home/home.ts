@@ -20,6 +20,7 @@ import { ToastService } from '../../shared/toast/toast.service';
 import { ErrorService } from '../../services/error.service';
 import { ModalService } from '../../services/modal.service';
 import { ViewportService } from '../../services/viewport';
+import { Loading } from '../../shared/loading/loading/loading';
 
 type Mode = 'all' | 'category';
 
@@ -34,12 +35,15 @@ type Mode = 'all' | 'category';
     AddArtForm,
     AsyncPipe,
     AddCategoryForm,
+    Loading,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
   categories$!: Observable<ICategory[]>;
+
+  isPageLoading = true;
 
   mode: Mode = 'all';
 
@@ -72,6 +76,7 @@ export class Home {
   }
 
   loadAllArts() {
+    this.isPageLoading = true;
     this.mode = 'all';
     this.currentCategoryId = null;
 
@@ -80,10 +85,12 @@ export class Home {
         this.allArts = arts;
         this.totalPages = Math.max(1, Math.ceil(this.allArts.length / this.pageSize));
         this.setPageOnClient(1);
+        this.isPageLoading = false;
         this.toastService.success('Arts successful loaded');
       },
       error: (err) => {
         this.toastService.error(this.errService.parseError(err.status));
+        this.isPageLoading = false;
         this.arts = [];
       },
     });
