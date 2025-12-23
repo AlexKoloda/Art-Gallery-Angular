@@ -24,6 +24,14 @@
       </app-button>
       }
     </div>
+    <app-button
+      variant="primary"
+      type="button"
+      [fullWidth]="true"
+      [size]="isMobile ? 'small' : 'medium'"
+      (click)="selectCategory(null)"
+      >All categories</app-button
+    >
 
     <div class="sidebar__section">
       <h3 [ngClass]="isMobile ? 'sidebarMob__title' : 'sidebar__title'">Action</h3>

@@ -52,7 +52,7 @@ export class Sidebar {
     this.categorySelect.emit(null);
   }
 
-  selectCategory(id: number) {
+  selectCategory(id: number | null) {
     this.categorySelect.emit(id);
     this.sidebarState.close();
   }
